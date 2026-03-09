@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>G_bt14</title>
+<link rel="icon" type="image/png" href="Dith_gab.png">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+/* LOADER */
+
+#loader{
+position:fixed;
+width:100%;
+height:100vh;
+background:#000000;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+#loader img{
+width:100px;
+animation:logoOpen 2.5s ease forwards;
+}
+
+@keyframes logoOpen{
+0%{transform:scale(.5);opacity:0;}
+50%{transform:scale(1.2);opacity:1;}
+100%{transform:scale(20);opacity:0;}
+}
+
+.loader-hidden{
+animation:slideUp 1s ease forwards;
+}
+
+@keyframes slideUp{
+to{transform:translateY(-100%);opacity:0;}
+}
+
+/* BACKGROUND */
+
+.container{
+width:100%;
+height: 100vh;
+min-height:fit-content;
+background:#121212;
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:40px;
+}
+
+/* LANDING */
+
+#landing{
+opacity:0;
+transition:opacity 1.5s ease;
+width:100%;
+position:relative;
+z-index:1;
+}
+
+#landing.show{
+opacity:1;
+}
+
+#landing::before{
+content:"";
+position:absolute;
+inset:0;
+background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0);
+background-size:25px 25px;
+animation:movePattern 40s linear infinite;
+z-index:-1;
+}
+
+@keyframes movePattern{
+from{background-position:0 0;}
+to{background-position:500px 500px;}
+}
+
+/* CARD */
+
+.card{
+width:300px;
+max-height: fit-content;
+background:#ff66a3;
+border:3px solid #000;
+box-shadow:12px 12px 0 #000;
+overflow:hidden;
+transform:translate(-6px,-6px);
+transition:.2s;
+}
+
+.card:hover{
+transform:translate(-10px,-10px);
+box-shadow:16px 16px 0 #000;
+}
+
+.head{
+font-size:14px;
+font-weight:900;
+background:#fff;
+padding:5px 12px;
+border-bottom:3px solid #000;
+}
+
+.content{
+padding:8px 12px;
+}
+
+/* BUTTON */
+
+.button{
+padding:5px 10px;
+border:3px solid #000;
+box-shadow:3px 3px 0 #000;
+background:#4ade80;
+cursor:pointer;
+transition:.15s;
+}
+
+.button:hover{
+transform:translate(2px,2px);
+box-shadow:1px 1px 0 #000;
+background:#1ac2ff;
+}
+
+/* DROPDOWN */
+
+.dropdown-title{
+cursor:pointer;
+user-select:none;
+transition:.2s;
+}
+
+.dropdown-title:hover{
+opacity:.7;
+}
+
+.dropdown-content{
+max-height:0;
+overflow:hidden;
+transition:max-height .5s ease;
+background-image:radial-gradient(circle at 1px 1px, rgb(227, 25, 123) 1px, transparent 0);
+background-size:25px 25px;
+animation:movePattern 40s linear infinite;
+z-index:-1;
+}
+
+.dropdown-content.open{
+max-height:10000px;
+
+}
+
+/* PORTFOLIO LAYOUT */
+
+#portfolio{
+margin-top:40px;
+width:100%;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+}
+
+.column{
+width:100%;
+}
+
+/* VIDEO GRID */
+
+.videoWrapper{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+margin:15px 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="loader">
+<img src="gbt.14.png">
+</div>
+
+<div class="container">
+
+<div id="landing">
+
+<div class="card">
+<div class="head">Welcome!</div>
+
+<div class="content">
+Welcome to G_bt14 Productions!
+
+<br><br>
+
+<button class="button"><i class="fa-brands fa-instagram"></i></button>
+<button class="button"><i class="fa-brands fa-tiktok"></i></button>
+
+</div>
+</div>
+
+<div id="portfolio">
+
+<div id="leaguesColumn" class="column"></div>
+<div id="playersColumn" class="column"></div>
+
+</div>
+
+</div>
+</div>
+
+<script>
+
+/* LOADER */
+
+window.addEventListener("load",()=>{
+
+setTimeout(()=>{
+
+const loader=document.getElementById("loader");
+
+loader.classList.add("loader-hidden");
+
+document.getElementById("landing").classList.add("show");
+
+setTimeout(()=>loader.style.display="none",1000);
+
+},2500)
+
+})
+
+/* DATA */
+
+const videoData={
+
+"LEAGUES":{
+
+"Premier League":{
+
+Arsenal:[
+{title:"IAN WRIGHT",file:"videos/PremierLeague/Arsenal/IANWRIGHT.mp4"},
+{title:"RAYA",file:"videos/PremierLeague/Arsenal/RAYA.mp4"}
+],
+
+"Aston Villa":[
+    {title:"Jhon Duran",file:"videos/PremierLeague/AstonVilla/JhonDuran.mp4"},
+],
+
+Brighton:[
+    {title:"Carlos Baleba",file:"videos/PremierLeague/Brighton/Baleba.mp4"}
+],
+
+Chelsea:[
+{title:"Drogba",file:"videos/PremierLeague/Chelsea/drogba.mp4"}
+],
+
+"Crystal Palace":[
+    {title:"Henderson",file:"videos/PremierLeague/CrystalPalace/draft_1.mp4"},
+    {title:"Mateta",file:"videos/PremierLeague/CrystalPalace/MATETAV1.mp4"},
+    {title:"ZAHA",file:"videos/PremierLeague/CrystalPalace/ZAHA.mp4"},
+    {title:"EZE",file:"videos/Premierleague/CrystalPalace/EZE.mp4"}
+    
+],
+
+Everton:[
+    {title:"Pickford",file:"videos/PremierLeague/Everton/PICKFORD.mp4"}
+],
+
+Liverpool:[
+    {title:"Van Dijk",file:"videos/PremierLeague/Liverpool/VVD.mp4"},
+    {title:"MANE",file:"videos/PremierLeague/Liverpool/MANE.mp4"},
+    {title:"Eketike",file:"videos/PremierLeague/Liverpool/eketike.mp4"},
+    {title:"Luis Diaz",file:"videos/PremierLeague/Liverpool/luisdiaz.mp4"}
+],
+
+"Manchester city":[
+    { title: "CHERKI", file: "videos/PremierLeague/ManchesterCity/CHERKI_1.mp4" },
+	{ title: "HAALAND", file: "videos/PremierLeague/ManchesterCity/erling.mp4"},
+    { title: "GUNDOGAN", file: "videos/PremierLeague/ManchesterCity/Gundogan.mp4"},
+    { title: "DE BRUYNE", file: "videos/PremierLeague/ManchesterCity/DeBruyne.mp4"},
+    { title: "GUARDIOLA", file: "videos/PremierLeague/ManchesterCity/GUARDIOLA.mp4"}
+
+
+],
+
+"Manchester united":[
+    {title:"Fenandes",file:"videos/PremierLeague/ManchesterUnited/Bruno.mp4"},
+    { title: "Bruno x Ronaldo", file: "videos/PremierLeague/ManchesterUnited/BXR.mp4" },
+    { title: "MAGUIRE!",file:"videos/PremierLeague/ManchesterUnited/MAGUIRETACKLE.mp4"},
+    { title: "AMORIM",file:"videos/PremierLeague/ManchesterUnited/amorimloss.mp4"},
+    { title: "Casemiero",file:"videos/PremierLeague/ManchesterUnited/Case-oh-miro.mp4"},
+    { title: "Amad",file:"videos/PremierLeague/ManchesterUnited/AMAD.mp4"},
+    { title: "Mainoo",file:"videos/PremierLeague/ManchesterUnited/Mainoo.mp4"},
+    { title: "Valencia",file:"videos/PremierLeague/ManchesterUnited/Valencia.mp4"},
+    { title: "Onana",file:"videos/PremierLeague/ManchesterUnited/ONANA24.mp4"},
+    { title: "Manchester derby",file:"videos/PremierLeague/ManchesterUnited/PANICFINAL.mp4"},
+    { title: "Manchester united vs Arsenal",file:"videos/PremierLeague/ManchesterUnited/utdvarasenal.mp4"},
+    { title: "Manchester united vs Bournouth",file:"videos/PremierLeague/ManchesterUnited/manuvsbournmouth.mp4"},
+    { title: "Manchester utd vs lyon(1)",file:"videos/PremierLeague/ManchesterUnited/1STLEG.mp4"},
+    { title: "Manchester utd vs lyon(2)",file:"videos/PremierLeague/ManchesterUnited/2NDLEG.mp4"}
+],
+
+Newcastle:[
+    {title:"Isak",file:"videos/PremierLeague/Newcastle/ISAK.mp4"}
+],
+
+"Nottinham forest":[
+    {title:"Gibbs-White",file:"videos/PremierLeague/NotinghamForest/gibbswhite.mp4"}
+
+],
+
+Tottenham:[
+    {title:"Dele",file:"videos/PremierLeague/Totenham/DELE.mp4"},
+    {title:"SON",file:"videos/PremierLeague/Totenham/SONNY.mp4"}
+],
+
+Westham:[
+    {title:"Michail Antonio",file:"videos/PremierLeague/WestHam/Antonio.mp4"},
+    {title:"Soucek",file:"videos/PremierLeague/WestHam/soucek.mp4"}
+]
+
+},
+
+"La Liga":{
+
+Barcelona:[
+ {title:"Araujo",file:"videos/LaLiga/Barcelona/Araujo.mp4"},
+ {title:"Neymar",file:"videos/LaLiga/Barcelona/NEY.mp4"},
+ {title:"MSN",file:"videos/LaLiga/Barcelona/msn.mp4"},
+ {title:"Szchezny",file:"videos/Laliga/Barcelona/szchezny.mp4"}
+],
+
+"Real Madrid":[
+    {title:"Curtois",file:"videos/LaLiga/RealMadrid/CURTOIS.mp4"},
+    {title:"Bellingham",file:"videos/LaLiga/RealMadrid/BELIGOL.mp4"},
+    {title:"Mbappe",file:"videos/LaLiga/RealMadrid/mbappe.mp4"},
+    {title:"Valverde",file:"videos/LaLiga/RealMadrid/VALVERDE.mp4"},
+]
+
+},
+
+"Bundesliga":{
+    Bayer_munich:[
+        {title:"Muller",file:"videos/Bundesliga/BayernMunich/MULLER.mp4"}
+    ],
+    Dortmund:[
+        {title:"Reus",file:"videos/Bundesliga/Dortmund/REUS.mp4"},
+        {title:"Gittens",file:"videos/Bundesliga/Dortmund/GITTENS.mp4"}
+    ],
+    Leipzig:[
+        {title:"Sesko",file:"videos/Bundesliga/Leipzig/Sesko.mp4"}
+    ]
+
+},
+
+"Serie A":{
+    "ACMILAN":[
+        {title:"Leao",file:"videos/SeriaA/ACMilan/leao.mp4"}
+    ],
+    "INTER MILAN":[
+        {title:"Dumfries",file:"videos/SerieA/Intermilan/D.mp4"},
+        {title:"Icardi",file:"videos/SeriaA/Intermilan/ICARDI.mp4"},
+        {title:"Di Marco",file:"videos/SerieA/Intermilan/DiMarco.mp4"}
+    ],
+    NAPOLI:[
+        {title:"Mctominay",file:"videos/SeriaA/Napoli/MCTOMINAY.mp4"},
+        {title:"Higuain",file:"videos/SeriaA/Napoli/Higuain.mp4"}
+    ],
+    JUVENTUS:[
+        {title:"Dybala",file:"videos/SeriaA/Juventus/Paulo.mp4"},
+        {title:"Cuadrado",file:"videos/SeriaA/Juventus/Cuadrado.mp4"}
+    ]
+
+},
+
+"Ligue un":{
+    PSG:[
+        {title:"Dembele",file:"videos/Ligue_un/PSG/DEMBELE.mp4"},
+        {title:"Mbaye",file:"videos/Ligue_un/PSG/MBAYE.mp4"}
+    ],
+}
+
+},
+
+PLAYERS:{
+
+UNDERRATED:[
+    {title:"Part 1",file:"videos/PLAYERS/Underrated/Pukki.mp4"},
+    {title:"Part 2",file:"videos/PLAYERS/Underrated/Jiminez.mp4"},
+    {title:"Part 3",file:"videos/PLAYERS/Underrated/Rashford.mp4"},
+    {title:"Part 4",file:"videos/PLAYERS/Underrated/Kudus.mp4"},
+    {title:"Part 5",file:"videos/PLAYERS/Underrated/WANBISSAKA.mp4"},
+    {title:"Part 6",file:"videos/PLAYERS/Underrated/Trossard.mp4"},
+    {title:"Part 7",file:"videos/PLAYERS/Underrated/WardProwse.mp4"},
+    {title:"Part 8",file:"videos/PLAYERS/Underrated/Phoden.mp4"},
+    {title:"Part 8.1",file:"videos/PLAYERS/Underrated/Summervile.mp4"},
+    {title:"Part 9",file:"videos/PLAYERS/Underrated/Palmer.mp4"},
+    {title:"Part 10",file:"videos/PLAYERS/Underrated/Lewangoalski.mp4"},
+    {title:"Part 11",file:"videos/PLAYERS/Underrated/Kubo.mp4"},
+    {title:"Part 12",file:"videos/PLAYERS/Underrated/Bailey.mp4"},
+    {title:"Part 13",file:"videos/PLAYERS/Underrated/Odegaard.mp4"},
+    {title:"Part 14",file:"videos/PLAYERS/Underrated/Lingard.mp4"},
+    {title:"Part 15",file:"videos/PLAYERS/Underrated/Griezman.mp4"},
+    {title:"Part 16",file:"videos/PLAYERS/Underrated/BONIFACE.mp4"},
+    {title:"Part 17",file:"videos/PLAYERS/Underrated/Olise.mp4"},
+    {title:"Part 18",file:"videos/PLAYERS/Underrated/Lautaro.mp4"},
+    {title:"Part 19",file:"videos/PLAYERS/Underrated/Wissa.mp4"},
+    {title:"Part 20",file:"videos/PLAYERS/Underrated/Gakpo.mp4"},
+    {title:"Part 22",file:"videos/PLAYERS/Underrated/Isco.mp4"},
+    {title:"Part 23",file:"videos/PLAYERS/Underrated/Woltermade.mp4"},
+    {title:"Part 24",file:"videos/PLAYERS/Underrated/V3.mp4"}
+
+
+],
+
+LEGENDS:[
+    {title:"Messi",file:"videos/PLAYERS/MESSI.mp4"},
+    {title:"Ronaldo",file:"videos/PLAYERS/CR7.mp4"},
+    {title:"Van Persie",file:"videos/PLAYERS/VANPERSIE.mp4"},
+    {title:"Kaka",file:"videos/PLAYERS/Kaka.mp4"}
+
+]
+
+}
+
+}
+
+/* RENDER FUNCTION */
+
+function renderPortfolio(){
+
+const leaguesColumn=document.getElementById("leaguesColumn")
+const playersColumn=document.getElementById("playersColumn")
+
+leaguesColumn.innerHTML=""
+playersColumn.innerHTML=""
+
+let openLeague=null
+let openTeam=null
+let openPlayer=null
+
+/* LEAGUES */
+
+for(let league in videoData.LEAGUES){
+
+const leagueTitle=document.createElement("h2")
+leagueTitle.textContent=league+" ▼"
+leagueTitle.style.color="white"
+leagueTitle.classList.add("dropdown-title")
+
+const leagueContainer=document.createElement("div")
+leagueContainer.classList.add("dropdown-content")
+
+leaguesColumn.appendChild(leagueTitle)
+leaguesColumn.appendChild(leagueContainer)
+
+leagueTitle.onclick=()=>{
+
+if(openLeague && openLeague!==leagueContainer){
+
+openLeague.classList.remove("open")
+
+}
+
+leagueContainer.classList.toggle("open")
+openLeague=leagueContainer
+
+}
+
+/* TEAMS */
+
+for(let team in videoData.LEAGUES[league]){
+
+const teamTitle=document.createElement("h3")
+teamTitle.textContent=team+" ▶"
+teamTitle.style.color="#4ade80"
+teamTitle.classList.add("dropdown-title")
+
+const teamContainer=document.createElement("div")
+teamContainer.classList.add("dropdown-content")
+
+leagueContainer.appendChild(teamTitle)
+leagueContainer.appendChild(teamContainer)
+
+teamTitle.onclick=()=>{
+
+if(openTeam && openTeam!==teamContainer){
+
+openTeam.classList.remove("open")
+
+}
+
+teamContainer.classList.toggle("open")
+openTeam=teamContainer
+
+}
+
+const wrapper=document.createElement("div")
+wrapper.className="videoWrapper"
+
+videoData.LEAGUES[league][team].forEach(video=>{
+
+const card=document.createElement("div")
+card.className="card"
+
+card.innerHTML=`
+<div class="head">${video.title}</div>
+<div class="content">
+<video width="100%" controls preload="metadata">
+<source src="${video.file}" type="video/mp4">
+</video>
+</div>
+`
+
+wrapper.appendChild(card)
+
+})
+
+teamContainer.appendChild(wrapper)
+
+}
+
+}
+
+/* PLAYERS */
+
+for(let group in videoData.PLAYERS){
+
+const playerTitle=document.createElement("h2")
+playerTitle.textContent=group+" ▼"
+playerTitle.style.color="white"
+playerTitle.classList.add("dropdown-title")
+
+const playerContainer=document.createElement("div")
+playerContainer.classList.add("dropdown-content")
+
+playersColumn.appendChild(playerTitle)
+playersColumn.appendChild(playerContainer)
+
+playerTitle.onclick=()=>{
+
+if(openPlayer && openPlayer!==playerContainer){
+
+openPlayer.classList.remove("open")
+
+}
+
+playerContainer.classList.toggle("open")
+openPlayer=playerContainer
+
+}
+
+const wrapper=document.createElement("div")
+wrapper.className="videoWrapper"
+
+videoData.PLAYERS[group].forEach(video=>{
+
+const card=document.createElement("div")
+card.className="card"
+
+card.innerHTML=`
+<div class="head">${video.title}</div>
+<div class="content">
+<video width="100%" controls preload="metadata">
+<source src="${video.file}" type="video/mp4">
+</video>
+</div>
+`
+
+wrapper.appendChild(card)
+
+})
+
+playerContainer.appendChild(wrapper)
+
+}
+
+}
+
+renderPortfolio()
+
+</script>
+
+</body>
+</html>
