@@ -190,9 +190,86 @@ gap:30px;
 margin:15px 0;
 }
 
+/*PAGE TOGGLE */
+/* PAGE TOGGLE */
+
+.page-toggle{
+position:fixed;
+bottom:20px;
+right:20px;
+display:flex;
+align-items:center;
+gap:10px;
+background:rgba(0,0,0,0.75);
+padding:10px 14px;
+border:3px solid #000;
+box-shadow:6px 6px 0 #000;
+border-radius:999px;
+z-index:9998;
+}
+
+.toggle-label{
+color:#fff;
+font-weight:900;
+font-size:12px;
+letter-spacing:1px;
+}
+
+.switch{
+position:relative;
+display:inline-block;
+width:56px;
+height:30px;
+}
+
+.switch input{
+opacity:0;
+width:0;
+height:0;
+}
+
+.slider{
+position:absolute;
+cursor:pointer;
+inset:0;
+background:#555;
+transition:.25s;
+border:3px solid #000;
+border-radius:999px;
+}
+
+.slider:before{
+content:"";
+position:absolute;
+height:18px;
+width:18px;
+left:4px;
+top:3px;
+background:#fff;
+border:2px solid #000;
+border-radius:50%;
+transition:.25s;
+}
+
+.switch input:checked + .slider{
+background:#4ade80;
+}
+
+.switch input:checked + .slider:before{
+transform:translateX(24px);
+}
+
 </style>
 </head>
-
+<!-- PAGE TOGGLE -->
+<div class="page-toggle">
+  <span class="toggle-label"></span>
+  <label class="switch">
+    <input type="checkbox" id="pageSwitch">
+    <span class="slider"></span>
+  </label>
+  <span class="toggle-label">WC</span>
+</div>
 <body>
 
 <div id="loader">
@@ -256,85 +333,82 @@ const videoData={
 "Premier League":{
 
 Arsenal:[
-{title:"IAN WRIGHT",file:"videos/PremierLeague/Arsenal/IANWRIGHT.mp4"},
-{title:"RAYA",file:"videos/PremierLeague/Arsenal/RAYA.mp4"}
+{title:"IAN WRIGHT",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/Arsenal/IANWRIGHT.mp4"},
+{title:"RAYA",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/Arsenal/RAYA.mp4"}
 ],
 
 "Aston Villa":[
-    {title:"Jhon Duran",file:"videos/PremierLeague/AstonVilla/JhonDuran.mp4"},
+    {title:"Jhon Duran",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/AstonVilla/JhonDuran.mp4"},
 ],
 
 Brighton:[
-    {title:"Carlos Baleba",file:"videos/PremierLeague/Brighton/Baleba.mp4"}
+    {title:"Carlos Baleba",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/Brighton/Baleba.mp4"}
 ],
 
-Chelsea:[
-{title:"Drogba",file:"videos/PremierLeague/Chelsea/drogba.mp4"}
-],
 
 "Crystal Palace":[
-    {title:"Henderson",file:"videos/PremierLeague/CrystalPalace/draft_1.mp4"},
-    {title:"Mateta",file:"videos/PremierLeague/CrystalPalace/MATETAV1.mp4"},
-    {title:"ZAHA",file:"videos/PremierLeague/CrystalPalace/ZAHA.mp4"},
-    {title:"EZE",file:"videos/Premierleague/CrystalPalace/EZE.mp4"}
+    {title:"Henderson",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/CrystalPalace/draft_1.mp4"},
+    {title:"Mateta",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/CrystalPalace/MATETAV1.mp4"},
+    {title:"ZAHA",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/CrystalPalace/ZAHA.mp4"},
+    {title:"EZE",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/CrystalPalace/EZE.mp4"}
     
 ],
 
 Everton:[
-    {title:"Pickford",file:"videos/PremierLeague/Everton/PICKFORD.mp4"}
+    {title:"Pickford",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/Everton/PICKFORD.mp4"}
 ],
 
 Liverpool:[
-    {title:"Van Dijk",file:"videos/PremierLeague/Liverpool/VVD.mp4"},
-    {title:"MANE",file:"videos/PremierLeague/Liverpool/MANE.mp4"},
-    {title:"Eketike",file:"videos/PremierLeague/Liverpool/eketike.mp4"},
-    {title:"Luis Diaz",file:"videos/PremierLeague/Liverpool/luisdiaz.mp4"}
+    {title:"Van Dijk",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/Liverpool/VVD.mp4"},
+    {title:"MANE",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/Liverpool/MANE.mp4"},
+    {title:"Eketike",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/Liverpool/eketike.mp4"},
+    {title:"Luis Diaz",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/Liverpool/luisdiaz.mp4"}
 ],
 
 "Manchester city":[
-    { title: "CHERKI", file: "videos/PremierLeague/ManchesterCity/CHERKI_1.mp4" },
-	{ title: "HAALAND", file: "videos/PremierLeague/ManchesterCity/erling.mp4"},
-    { title: "GUNDOGAN", file: "videos/PremierLeague/ManchesterCity/Gundogan.mp4"},
-    { title: "DE BRUYNE", file: "videos/PremierLeague/ManchesterCity/DeBruyne.mp4"},
-    { title: "GUARDIOLA", file: "videos/PremierLeague/ManchesterCity/GUARDIOLA.mp4"}
+    { title: "CHERKI", file: "https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/Manchestercity/CHERKI_1.mp4" },
+	{ title: "HAALAND", file: "https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/Manchestercity/erling.mp4"},
+    { title: "GUNDOGAN", file: "https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/Manchestercity/Gundogan.mp4"},
+    { title: "DE BRUYNE", file: "https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/Manchestercity/DeBruyne.mp4"},
+    { title: "GUARDIOLA", file: "https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/Manchestercity/GUARDIOLA.mp4"}
 
 
 ],
 
 "Manchester united":[
-    {title:"Fenandes",file:"videos/PremierLeague/ManchesterUnited/Bruno.mp4"},
-    { title: "Bruno x Ronaldo", file: "videos/PremierLeague/ManchesterUnited/BXR.mp4" },
-    { title: "MAGUIRE!",file:"videos/PremierLeague/ManchesterUnited/MAGUIRETACKLE.mp4"},
-    { title: "AMORIM",file:"videos/PremierLeague/ManchesterUnited/amorimloss.mp4"},
-    { title: "Casemiero",file:"videos/PremierLeague/ManchesterUnited/Case-oh-miro.mp4"},
-    { title: "Amad",file:"videos/PremierLeague/ManchesterUnited/AMAD.mp4"},
-    { title: "Mainoo",file:"videos/PremierLeague/ManchesterUnited/Mainoo.mp4"},
-    { title: "Valencia",file:"videos/PremierLeague/ManchesterUnited/Valencia.mp4"},
-    { title: "Onana",file:"videos/PremierLeague/ManchesterUnited/ONANA24.mp4"},
-    { title: "Manchester derby",file:"videos/PremierLeague/ManchesterUnited/PANICFINAL.mp4"},
-    { title: "Manchester united vs Arsenal",file:"videos/PremierLeague/ManchesterUnited/utdvarasenal.mp4"},
-    { title: "Manchester united vs Bournouth",file:"videos/PremierLeague/ManchesterUnited/manuvsbournmouth.mp4"},
-    { title: "Manchester utd vs lyon(1)",file:"videos/PremierLeague/ManchesterUnited/1STLEG.mp4"},
-    { title: "Manchester utd vs lyon(2)",file:"videos/PremierLeague/ManchesterUnited/2NDLEG.mp4"}
+    {title:"Fenandes",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/ManchesterUnited/Bruno.mp4"},
+    { title: "Bruno x Ronaldo", file: "https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/ManchesterUnited/BXR.mp4" },
+    { title: "MAGUIRE!",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/ManchesterUnited/MAGUIRETACKLE.mp4"},
+    { title: "AMORIM",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/ManchesterUnited/amorimloss.mp4"},
+    { title: "Casemiero",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/ManchesterUnited/Case-oh-miro.mp4"},
+    { title: "Amad",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/ManchesterUnited/AMAD.mp4"},
+    { title: "Mainoo",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/ManchesterUnited/Mainoo.mp4"},
+    { title: "Valencia",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/ManchesterUnited/valencia.mp4"},
+    { title: "Onana",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/ManchesterUnited/ONANA24.mp4"},
+    { title: "Manchester derby",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/ManchesterUnited/PANICFINAL.mp4"},
+    { title: "Manchester united vs Arsenal",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/ManchesterUnited/utdvarasenal.mp4"},
+    { title: "Manchester united vs Bournouth",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/ManchesterUnited/manuvsbournmouth.mp4"},
+    { title: "Manchester utd vs lyon(1)",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/ManchesterUnited/1STLEG.mp4"},
+    { title: "Manchester utd vs lyon(2)",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/ManchesterUnited/2NDLEG.mp4"}
 ],
 
 Newcastle:[
-    {title:"Isak",file:"videos/PremierLeague/Newcastle/ISAK.mp4"}
+    {title:"Isak",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/Newcastle/ISAK.mp4"}
 ],
 
 "Nottinham forest":[
-    {title:"Gibbs-White",file:"videos/PremierLeague/NotinghamForest/gibbswhite.mp4"}
+    {title:"Gibbs-White",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/NotinghamForest/gibbswhite.mp4"}
 
 ],
 
 Tottenham:[
-    {title:"Dele",file:"videos/PremierLeague/Totenham/DELE.mp4"},
-    {title:"SON",file:"videos/PremierLeague/Totenham/SONNY.mp4"}
+    {title:"Dele",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/Totenham/DELE.mp4"},
+    {title:"SON",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/Totenham/SONNY.mp4"}
 ],
 
 Westham:[
-    {title:"Michail Antonio",file:"videos/PremierLeague/WestHam/Antonio.mp4"},
-    {title:"Soucek",file:"videos/PremierLeague/WestHam/soucek.mp4"}
+    {title:"Michail Antonio",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/WestHam/Antonio.mp4"},
+    {title:"Soucek",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Premierleague/WestHam/soucek.mp4"}
 ]
 
 },
@@ -342,59 +416,59 @@ Westham:[
 "La Liga":{
 
 Barcelona:[
- {title:"Araujo",file:"videos/LaLiga/Barcelona/Araujo.mp4"},
- {title:"Neymar",file:"videos/LaLiga/Barcelona/NEY.mp4"},
- {title:"MSN",file:"videos/LaLiga/Barcelona/msn.mp4"},
- {title:"Szchezny",file:"videos/Laliga/Barcelona/szchezny.mp4"}
+ {title:"Araujo",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/LaLiga/Barcelona/Araujo.mp4"},
+ {title:"Neymar",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/LaLiga/Barcelona/NEY.mp4"},
+ {title:"MSN",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/LaLiga/Barcelona/msn.mp4"},
+ {title:"Szchezny",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/LaLiga/Barcelona/szchezny.mp4"}
 ],
 
 "Real Madrid":[
-    {title:"Curtois",file:"videos/LaLiga/RealMadrid/CURTOIS.mp4"},
-    {title:"Bellingham",file:"videos/LaLiga/RealMadrid/BELIGOL.mp4"},
-    {title:"Mbappe",file:"videos/LaLiga/RealMadrid/mbappe.mp4"},
-    {title:"Valverde",file:"videos/LaLiga/RealMadrid/VALVERDE.mp4"},
+    {title:"Curtois",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/LaLiga/RealMadrid/CURTOIS.mp4"},
+    {title:"Bellingham",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/LaLiga/RealMadrid/BELIGOL.mp4"},
+    {title:"Mbappe",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/LaLiga/RealMadrid/mbappe.mp4"},
+    {title:"Valverde",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/LaLiga/RealMadrid/VALVERDE.mp4"},
 ]
 
 },
 
 "Bundesliga":{
     Bayer_munich:[
-        {title:"Muller",file:"videos/Bundesliga/BayernMunich/MULLER.mp4"}
+        {title:"Muller",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Bundesliga/BayernMunich/MULLER.mp4"}
     ],
     Dortmund:[
-        {title:"Reus",file:"videos/Bundesliga/Dortmund/REUS.mp4"},
-        {title:"Gittens",file:"videos/Bundesliga/Dortmund/GITTENS.mp4"}
+        {title:"Reus",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Bundesliga/Dortmund/REUS.mp4"},
+        {title:"Gittens",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Bundesliga/Dortmund/GITTENS.mp4"}
     ],
     Leipzig:[
-        {title:"Sesko",file:"videos/Bundesliga/Leipzig/Sesko.mp4"}
+        {title:"Sesko",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Bundesliga/Leipzig/Sesko.mp4"}
     ]
 
 },
 
 "Serie A":{
     "ACMILAN":[
-        {title:"Leao",file:"videos/SeriaA/ACMilan/leao.mp4"}
+        {title:"Leao",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/SeriaA/ACMilan/leao.mp4"}
     ],
     "INTER MILAN":[
-        {title:"Dumfries",file:"videos/SerieA/Intermilan/D.mp4"},
-        {title:"Icardi",file:"videos/SeriaA/Intermilan/ICARDI.mp4"},
-        {title:"Di Marco",file:"videos/SerieA/Intermilan/DiMarco.mp4"}
+        {title:"Icardi",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/SeriaA/Intermilan/ICARDI.mp4"},
+        {title:"Dumfries",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/SeriaA/Intermilan/D.mp4"},
+        {title:"Di Marco",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/SeriaA/Intermilan/DiMarco.mp4"}
     ],
     NAPOLI:[
-        {title:"Mctominay",file:"videos/SeriaA/Napoli/MCTOMINAY.mp4"},
-        {title:"Higuain",file:"videos/SeriaA/Napoli/Higuain.mp4"}
+        {title:"Mctominay",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/SeriaA/Napoli/MCTOMINAY.mp4"},
+        {title:"Higuain",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/SeriaA/Napoli/Higuain.mp4"}
     ],
     JUVENTUS:[
-        {title:"Dybala",file:"videos/SeriaA/Juventus/Paulo.mp4"},
-        {title:"Cuadrado",file:"videos/SeriaA/Juventus/Cuadrado.mp4"}
+        {title:"Dybala",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/SeriaA/Juventus/Paulo.mp4"},
+        {title:"Cuadrado",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/SeriaA/Juventus/Cuadrado.mp4"}
     ]
 
 },
 
 "Ligue un":{
     PSG:[
-        {title:"Dembele",file:"videos/Ligue_un/PSG/DEMBELE.mp4"},
-        {title:"Mbaye",file:"videos/Ligue_un/PSG/MBAYE.mp4"}
+        {title:"Dembele",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Ligue_un/PSG/DEMBELE.mp4"},
+        {title:"Mbaye",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/Ligue_un/PSG/MBAYE.mp4"}
     ],
 }
 
@@ -403,39 +477,39 @@ Barcelona:[
 PLAYERS:{
 
 UNDERRATED:[
-    {title:"Part 1",file:"videos/PLAYERS/Underrated/Pukki.mp4"},
-    {title:"Part 2",file:"videos/PLAYERS/Underrated/Jiminez.mp4"},
-    {title:"Part 3",file:"videos/PLAYERS/Underrated/Rashford.mp4"},
-    {title:"Part 4",file:"videos/PLAYERS/Underrated/Kudus.mp4"},
-    {title:"Part 5",file:"videos/PLAYERS/Underrated/WANBISSAKA.mp4"},
-    {title:"Part 6",file:"videos/PLAYERS/Underrated/Trossard.mp4"},
-    {title:"Part 7",file:"videos/PLAYERS/Underrated/WardProwse.mp4"},
-    {title:"Part 8",file:"videos/PLAYERS/Underrated/Phoden.mp4"},
-    {title:"Part 8.1",file:"videos/PLAYERS/Underrated/Summervile.mp4"},
-    {title:"Part 9",file:"videos/PLAYERS/Underrated/Palmer.mp4"},
-    {title:"Part 10",file:"videos/PLAYERS/Underrated/Lewangoalski.mp4"},
-    {title:"Part 11",file:"videos/PLAYERS/Underrated/Kubo.mp4"},
-    {title:"Part 12",file:"videos/PLAYERS/Underrated/Bailey.mp4"},
-    {title:"Part 13",file:"videos/PLAYERS/Underrated/Odegaard.mp4"},
-    {title:"Part 14",file:"videos/PLAYERS/Underrated/Lingard.mp4"},
-    {title:"Part 15",file:"videos/PLAYERS/Underrated/Griezman.mp4"},
-    {title:"Part 16",file:"videos/PLAYERS/Underrated/BONIFACE.mp4"},
-    {title:"Part 17",file:"videos/PLAYERS/Underrated/Olise.mp4"},
-    {title:"Part 18",file:"videos/PLAYERS/Underrated/Lautaro.mp4"},
-    {title:"Part 19",file:"videos/PLAYERS/Underrated/Wissa.mp4"},
-    {title:"Part 20",file:"videos/PLAYERS/Underrated/Gakpo.mp4"},
-    {title:"Part 22",file:"videos/PLAYERS/Underrated/Isco.mp4"},
-    {title:"Part 23",file:"videos/PLAYERS/Underrated/Woltermade.mp4"},
-    {title:"Part 24",file:"videos/PLAYERS/Underrated/V3.mp4"}
+    {title:"Part 1",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Pukki.mp4"},
+    {title:"Part 2",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Jiminez.mp4"},
+    {title:"Part 3",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Rashford.mp4"},
+    {title:"Part 4",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Kudus.mp4"},
+    {title:"Part 5",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/WANBISSAKA.mp4"},
+    {title:"Part 6",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Trossard.mp4"},
+    {title:"Part 7",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/WardProwse.mp4"},
+    {title:"Part 8",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Phoden.mp4"},
+    {title:"Part 8.1",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Summervile.mp4"},
+    {title:"Part 9",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Palmer.mp4"},
+    {title:"Part 10",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Lewangoalski.mp4"},
+    {title:"Part 11",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Kubo.mp4"},
+    {title:"Part 12",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Bailey.mp4"},
+    {title:"Part 13",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Odegaard.mp4"},
+    {title:"Part 14",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Lingard.mp4"},
+    {title:"Part 15",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Griezman.mp4"},
+    {title:"Part 16",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/BONIFACE.mp4"},
+    {title:"Part 17",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Olise.mp4"},
+    {title:"Part 18",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Lautaro.mp4"},
+    {title:"Part 19",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Wissa.mp4"},
+    {title:"Part 20",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Gakpo.mp4"},
+    {title:"Part 22",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Isco.mp4"},
+    {title:"Part 23",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/Woltermade.mp4"},
+    {title:"Part 24",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/Underrated/V3.mp4"}
 
 
 ],
 
 LEGENDS:[
-    {title:"Messi",file:"videos/PLAYERS/MESSI.mp4"},
-    {title:"Ronaldo",file:"videos/PLAYERS/CR7.mp4"},
-    {title:"Van Persie",file:"videos/PLAYERS/VANPERSIE.mp4"},
-    {title:"Kaka",file:"videos/PLAYERS/Kaka.mp4"}
+    {title:"Messi",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/MESSI.mp4"},
+    {title:"Ronaldo",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/CR7.mp4"},
+    {title:"Van Persie",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/VANPERSIE.mp4"},
+    {title:"Kaka",file:"https://storage.cloud.google.com/vidoes_assets/web%20applications/videos/PLAYERS/kaka.mp4"}
 
 ]
 
@@ -596,7 +670,14 @@ playerContainer.appendChild(wrapper)
 }
 
 renderPortfolio()
+const pageSwitch = document.getElementById("pageSwitch");
 
+// Premier League page = OFF
+pageSwitch.checked = false;
+
+pageSwitch.addEventListener("change", () => {
+    window.location.href = "wc.html";
+});
 </script>
 
 </body>
