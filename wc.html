@@ -97,7 +97,7 @@ to{background-position:500px 500px;}
 /* CARD */
 
 .card{
-width:300px;
+width:min(300px,100%);
 max-height: fit-content;
 background:#cb0c0c;
 border:3px solid #000;
@@ -146,6 +146,12 @@ background:#1ac2ff;
 cursor:pointer;
 user-select:none;
 transition:.2s;
+overflow-wrap:break-word;
+}
+@media (max-width:768px){
+    .dropdown-title{
+        text-align:center;
+    }
 }
 
 .dropdown-title:hover{
@@ -191,6 +197,12 @@ margin:15px auto;
 width:100%;
 max-width:900px;
 justify-items:center;
+}
+.videoWrapper video{
+    display:block;
+    width:100%;
+    height:auto;
+    max-width:100%;
 }
 @media (max-width:768px){
     .videoWrapper{
